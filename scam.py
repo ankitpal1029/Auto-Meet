@@ -2,13 +2,17 @@
 
 
 
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
 import schedule
 from selenium.webdriver.common.action_chains import ActionChains
 
 from selenium.webdriver.common.keys import Keys
 
-mail_address = ''
-password = ''
+mail_address = os.environ.get("email")
+password = os.environ.get("password")
 
 
 from selenium import webdriver
@@ -84,7 +88,7 @@ def job():
     turnOffMicCam()
     AskToJoin()
 
-schedule.every().day.at("10:00").do(job)
+schedule.every().tuesday.at("11:10").do(job)
 
 while True:
     schedule.run_pending()
